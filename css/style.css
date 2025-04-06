@@ -1,0 +1,48 @@
+/* style.css */
+
+/* ページ全体でスムーズスクロールを有効にする */
+html {
+  scroll-behavior: smooth;
+}
+
+/* bodyの基本的な設定（HTMLタグのstyle属性と重複する部分もあるが念のため） */
+/* Tailwindが基本的なスタイルを提供しますが、フォントなどを確実に適用 */
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  -webkit-font-smoothing: antialiased; /* フォントを滑らかに表示 (Mac) */
+  -moz-osx-font-smoothing: grayscale; /* フォントを滑らかに表示 (Firefox) */
+}
+
+/* ヒーローセクションのアニメーション（index.html 内のクラスに対応） */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px); /* 少しだけ下から */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* アニメーションを適用する要素の初期状態と設定 */
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+  opacity: 0; /* 最初は透明にしておく */
+}
+
+/* アニメーションの遅延実行用クラス */
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
+
+
+/* ここに他のカスタムスタイルを追加できます */
+/* 例：特定のリンクの色を変えたい、など */
+/* .custom-link {
+  color: #ff5733;
+} */
