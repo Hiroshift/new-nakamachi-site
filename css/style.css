@@ -1,48 +1,151 @@
-/* style.css */
+/* style.css - 手書き版 v3 (シンプル構成ベース) */
 
-/* ページ全体でスムーズスクロールを有効にする */
-html {
-  scroll-behavior: smooth;
+/* --- 基本設定 & リセット --- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
-/* bodyの基本的な設定（HTMLタグのstyle属性と重複する部分もあるが念のため） */
-/* Tailwindが基本的なスタイルを提供しますが、フォントなどを確実に適用 */
+html { scroll-behavior: smooth; font-size: 16px; }
 body {
   font-family: 'Noto Sans JP', sans-serif;
-  -webkit-font-smoothing: antialiased; /* フォントを滑らかに表示 (Mac) */
-  -moz-osx-font-smoothing: grayscale; /* フォントを滑らかに表示 (Firefox) */
+  line-height: 1.7;
+  color: #333;
+  background-color: #f8fafc; /* body背景色 */
+  margin: 0;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: #2563eb; text-decoration: none; transition: color 0.3s ease; }
+a:hover { text-decoration: underline; color: #1d4ed8; }
+ul { list-style: disc; padding-left: 1.5em; }
+li { margin-bottom: 0.5rem; }
+
+/* --- レイアウト用共通クラス --- */
+.container, .section__inner {
+  width: 100%; max-width: 1100px; margin-left: auto; margin-right: auto;
+  padding-left: 20px; padding-right: 20px;
+}
+.section { padding-top: 60px; padding-bottom: 60px; }
+.section__title { font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 40px; color: #1f2937; }
+.section__subtitle { text-align: center; color: #4b5563; margin-bottom: 40px; max-width: 640px; margin-left: auto; margin-right: auto; }
+.button { display: inline-block; background-color: #2563eb; color: white; font-weight: 700; padding: 10px 25px; border-radius: 5px; transition: background-color 0.3s ease; cursor: pointer; border: none; text-align: center; font-size: 1rem; }
+.button:hover { background-color: #1d4ed8; text-decoration: none; color: white; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
+.hero__br { display: block; }
+@media (min-width: 768px) { .hero__br { display: none; } }
+
+
+/* --- ヘッダー --- */
+.header { background-color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+.header__inner { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+.header__logo h1 { font-size: 1.25rem; font-weight: 700; }
+.header__logo a { color: #1f2937; text-decoration: none; }
+.header__gnav { display: none; }
+@media (min-width: 768px) {
+  .header__gnav { display: block; }
+  .header__gnav-list { list-style: none; display: flex; gap: 25px; padding-left: 0; }
+  .header__gnav-item a { color: #4b5563; font-weight: 500; text-decoration: none; }
+  .header__gnav-item a:hover { color: #2563eb; text-decoration: none; }
+}
+.header__hamburger { display: block; cursor: pointer; border: none; background: none; padding: 0; }
+.header__hamburger span { display: block; width: 25px; height: 3px; background-color: #333; margin: 5px 0; }
+@media (min-width: 768px) { .header__hamburger { display: none; } }
+
+
+/* --- ヒーロー --- */
+/* ↓↓↓ ここが修正・統合されたヒーローセクションのスタイル ↓↓↓ */
+#hero { /* <<<--- セレクタが #hero (ID) であることを確認！ */
+  position: relative;
+  height: 500px;      /* デフォルトの高さ */
+  overflow: hidden;   /* はみ出し防止 */
+  background-image: url('../images/hero-image.jpg'); /* <<<--- 画像パスを確認！(相対パス) */
+  background-size: cover;                             /* 要素全体を覆う */
+  background-position: center center;                 /* 中央を表示 (ここを center top や center bottom に変えて調整) */
+  /* ↓ 背景画像の上にテキストを表示するための設定 */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-/* ヒーローセクションのアニメーション（index.html 内のクラスに対応） */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px); /* 少しだけ下から */
+/* 画面幅が768px以上になった場合 */
+@media (min-width: 768px) {
+  #hero { /* <<<--- セレクタが #hero (ID) であることを確認！ */
+    height: 600px; /* 高さを変更 */
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
-/* アニメーションを適用する要素の初期状態と設定 */
-.animate-fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
-  opacity: 0; /* 最初は透明にしておく */
+/* ヒーローセクションのテキスト用オーバーレイとコンテンツ配置 */
+.hero__overlay {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* 半透明の黒 */
+  z-index: 1;
 }
-
-/* アニメーションの遅延実行用クラス */
-.animation-delay-300 {
-  animation-delay: 300ms;
+.hero__inner {
+  position: relative; z-index: 2; padding: 20px;
 }
+.hero__title { font-size: 2.2rem; font-weight: 700; margin-bottom: 15px; line-height: 1.4; }
+.hero__subtitle { font-size: 1.1rem; margin-bottom: 30px; max-width: 600px; }
+.hero__button { font-size: 1.1rem; padding: 12px 30px; border-radius: 30px; }
+/* ↑↑↑ ヒーロー関連ここまで ↑↑↑ */
 
-.animation-delay-600 {
-  animation-delay: 600ms;
-}
+
+/* --- 設備紹介 --- */
+.equipment { background-color: white; }
+.equipment__highlight { max-width: 900px; margin: 0 auto; background-color: #f9fafb; padding: 40px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); display: flex; flex-wrap: wrap; align-items: center; gap: 30px; }
+.equipment__image-area { width: 100%; }
+.equipment__text-area { width: 100%; }
+@media (min-width: 768px) { .equipment__highlight { flex-wrap: nowrap; gap: 40px; } .equipment__image-area { width: 50%; } .equipment__text-area { width: 50%; } }
+.equipment__image-area img { border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+.equipment__name { font-size: 1.75rem; font-weight: 700; margin-bottom: 15px; color: #1d4ed8; }
+.equipment__description { margin-bottom: 20px; color: #374151; }
+.equipment__features { margin-bottom: 25px; color: #374151; }
+.equipment__button { padding: 8px 20px; }
 
 
-/* ここに他のカスタムスタイルを追加できます */
-/* 例：特定のリンクの色を変えたい、など */
-/* .custom-link {
-  color: #ff5733;
-} */
+/* --- サービス --- */
+.services { background-color: #f3f4f6; }
+.services__container { display: grid; gap: 30px; }
+@media (min-width: 768px) { .services__container { grid-template-columns: repeat(3, 1fr); } }
+.service-card { background-color: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.08); transition: transform 0.3s ease; text-align: center; }
+.service-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+.service-card__image-area { margin-bottom: 20px; }
+.service-card__image-area img { width: 100%; height: 180px; object-fit: cover; border-radius: 5px; }
+.service-card__title { font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; }
+.service-card__description { color: #4b5563; margin-bottom: 15px; font-size: 0.9rem; }
+.service-card__button { font-weight: 600; padding: 8px 18px; font-size: 0.9rem; background: none; color: #2563eb; border: 1px solid #2563eb; }
+.service-card__button:hover { background: #eff6ff; color: #1d4ed8; text-decoration: none; }
+
+
+/* --- お問い合わせ --- */
+.contact { background: #2563eb; color: white; }
+.contact__title { color: white; }
+.contact__container { max-width: 900px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px; background-color: white; color: #1f2937; padding: 40px; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+@media (min-width: 768px) { .contact__container { flex-wrap: nowrap; padding: 50px; } .contact__info { width: 35%; } .contact__form-area { width: 65%; } }
+.contact__info { width: 100%; }
+.contact__subtitle { font-size: 1.5rem; font-weight: 700; margin-bottom: 25px; border-bottom: 2px solid #2563eb; padding-bottom: 8px; }
+.contact__info p { margin-bottom: 12px; font-size: 0.9rem; line-height: 1.6; }
+.contact__info p:last-child { margin-bottom: 0; }
+.contact__info a { color: #2563eb; word-break: break-all; }
+.contact__form-area { width: 100%; }
+.contact__form .form-group { margin-bottom: 20px; }
+.contact__form input, .contact__form textarea { display: block; width: 100%; padding: 12px 15px; border: 1px solid #d1d5db; border-radius: 5px; font-size: 1rem; line-height: 1.5; color: #1f2937; font-family: inherit; }
+.contact__form input::placeholder, .contact__form textarea::placeholder { color: #9ca3af; }
+.contact__form input:focus, .contact__form textarea:focus { outline: none; border-color: #2563eb; box-shadow: 0 0 0 3px rgb(59 130 246 / 0.5); }
+.contact__form textarea { resize: vertical; min-height: 120px; }
+.contact__submit-button { width: 100%; font-size: 1rem; padding: 12px 20px; border-radius: 5px; }
+.contact__submit-button:disabled { opacity: 0.5; cursor: not-allowed; }
+.form-message { margin-top: 15px; font-size: 0.9rem; font-weight: 500; min-height: 1.3em; }
+.form-message.success { color: #16a34a; }
+.form-message.error { color: #dc2626; }
+
+
+/* --- フッター --- */
+.footer { background-color: #1f2937; color: #9ca3af; text-align: center; padding: 30px 15px; font-size: 0.875rem; }
+
+/* --- アニメーション --- */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.animate-fade-in { animation: fadeIn 0.8s ease-out forwards; opacity: 0; }
+.animation-delay-300 { animation-delay: 300ms; }
+.animation-delay-600 { animation-delay: 600ms; }

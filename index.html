@@ -4,144 +4,139 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>株式会社中町印刷 - 歴史と革新の融合、印刷の新たな挑戦</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="css/style.css"> <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-100 text-gray-800" style="font-family: 'Noto Sans JP', sans-serif;">
+<body>
 
-    <header class="bg-white shadow-md sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <div class="text-xl font-bold text-gray-800">株式会社中町印刷</div>
-            <div class="hidden md:flex space-x-6">
-                <a href="#hero" class="text-gray-600 hover:text-blue-600 transition duration-300">ホーム</a>
-                <a href="#equipment" class="text-gray-600 hover:text-blue-600 transition duration-300">設備紹介</a>
-                <a href="#services" class="text-gray-600 hover:text-blue-600 transition duration-300">サービス</a>
-                <a href="#contact" class="text-gray-600 hover:text-blue-600 transition duration-300">お問い合わせ</a>
-            </div>
-            <div class="md:hidden">
-                <button class="text-gray-600 focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
-            </div>
+    <header id="header" class="header">
+      <div class="header__inner">
+        <div class="header__logo">
+            <h1><a href="index.html">株式会社中町印刷</a></h1>
+        </div>
+        <div class="header__hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="header__gnav">
+            <ul class="header__gnav-list">
+                <li class="header__gnav-item"><a href="#hero">ホーム</a></li>
+                <li class="header__gnav-item"><a href="#equipment">設備紹介</a></li>
+                <li class="header__gnav-item"><a href="#services">サービス</a></li>
+                <li class="header__gnav-item"><a href="#contact">お問い合わせ</a></li>
+            </ul>
         </nav>
+      </div>
     </header>
 
     <main>
-        <section id="hero" class="relative">
-            <img src="images/hero-placeholder.jpg" alt="背景画像" class="w-full h-[500px] md:h-[600px] object-cover">
-            <div class="absolute inset-0 bg-black bg-opacity-40 flex flex-col justify-center items-center text-center text-white p-6">
-                <h1 class="text-3xl md:text-5xl font-bold mb-4 leading-tight">歴史と革新の融合、<br>印刷の新たな挑戦</h1>
-                <p class="text-lg md:text-xl mb-8 max-w-2xl">最先端の印刷技術と確かな品質で<br class="md:hidden">お客様のビジョンを形にします</p>
-                <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 shadow-lg">お問い合わせ</a>
+        <section id="hero" class="hero">
+            <div class="hero__overlay"></div>
+            <div class="hero__inner">
+                <h1 class="hero__title">歴史と革新の融合、<br>印刷の新たな挑戦</h1>
+                <p class="hero__subtitle">最先端の印刷技術と確かな品質で<br class="hero__br">お客様のビジョンを形にします</p>
+                <a href="#contact" class="button hero__button">お問い合わせ</a>
             </div>
         </section>
 
-        <section id="equipment" class="py-16 md:py-24 bg-white">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-12 text-gray-800">最新設備紹介</h2>
-                <div class="max-w-4xl mx-auto bg-gray-50 p-8 md:p-12 rounded-lg shadow-xl text-left md:flex md:items-center gap-8">
-                    <div class="md:w-1/2 mb-6 md:mb-0">
-                        <img src="images/equipment-placeholder.jpg" alt="最新設備 LITHORNE G37" class="w-full h-auto rounded-lg shadow-md object-cover">
+        <section id="equipment" class="equipment section">
+            <div class="section__inner">
+                <h2 class="section__title">最新設備紹介</h2>
+                <div class="equipment__highlight">
+                    <div class="equipment__image-area">
+                        <img src="images/equipment-lithorne.jpg" alt="最新鋭 LITHORNE G37">
                     </div>
-                    <div class="md:w-1/2">
-                        <h3 class="text-2xl font-bold mb-4 text-blue-700">最新鋭 LITHORNE G37</h3>
-                        <p class="mb-5 text-gray-700">最新のLITHORNE G37は、生産・消費後の環境影響を考慮する最新鋭の技術です。</p>
-                        <ul class="list-disc list-inside mb-6 space-y-2 text-gray-700">
+                    <div class="equipment__text-area">
+                        <h3 class="equipment__name">最新鋭 LITHORNE G37</h3>
+                        <p class="equipment__description">最新のLITHORNE G37は、生産・消費後の環境影響を考慮する最新鋭の技術です。</p>
+                        <ul class="equipment__features">
                             <li>毎時15,000枚の高速印刷で生産性向上</li>
                             <li>人間工学に基づく操作性の高い設計</li>
                             <li>環境負荷低減に貢献する省エネルギー技術</li>
                         </ul>
-                        <a href="#" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-5 rounded transition duration-300">詳細を見る</a>
+                        <a href="#" class="button equipment__button">詳細を見る</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="services" class="py-16 md:py-24 bg-gray-100">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">サービス内容</h2>
-                <p class="text-gray-600 mb-12 max-w-xl mx-auto">「歴史と革新を組み合わせた、中町印刷の印刷ソリューション」</p>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="bg-white p-6 rounded-lg shadow-md transform hover:scale-105 transition duration-300">
-                        <img src="images/uv-printing-placeholder.jpg" alt="UV印刷" class="w-full h-48 object-cover rounded-md mb-5">
-                        <h3 class="text-xl font-bold mb-2">UV印刷</h3>
-                        <p class="text-gray-600 mb-4 text-sm">高品質なUV印刷で、速乾性と鮮やかな色彩、特殊素材への対応を実現します。</p>
-                        <a href="#" class="text-blue-600 hover:underline font-semibold">詳しく見る</a>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md transform hover:scale-105 transition duration-300">
-                         <img src="images/die-cutting-placeholder.jpg" alt="抜き加工" class="w-full h-48 object-cover rounded-md mb-5">
-                        <h3 class="text-xl font-bold mb-2">抜き加工</h3>
-                        <p class="text-gray-600 mb-4 text-sm">トムソン加工による精密な型抜きで、パッケージや販促物に独自性を与えます。</p>
-                        <a href="#" class="text-blue-600 hover:underline font-semibold">詳しく見る</a>
-                    </div>
-                    <div class="bg-white p-6 rounded-lg shadow-md transform hover:scale-105 transition duration-300">
-                         <img src="images/printing-services-placeholder.jpg" alt="印刷サービス" class="w-full h-48 object-cover rounded-md mb-5">
-                        <h3 class="text-xl font-bold mb-2">多様な印刷サービス</h3>
-                        <p class="text-gray-600 mb-4 text-sm">チラシ、ポスター、名刺、封筒など、お客様のあらゆるニーズに応えます。</p>
-                        <a href="#" class="text-blue-600 hover:underline font-semibold">詳しく見る</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="py-16 md:py-24 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">お問い合わせ</h2>
-                <div class="max-w-4xl mx-auto flex flex-wrap md:flex-nowrap gap-10 bg-white text-gray-800 p-8 md:p-10 rounded-lg shadow-2xl">
-                    <div class="w-full md:w-1/3">
-                        <h3 class="text-2xl font-bold mb-6 border-b-2 border-blue-600 pb-2">会社情報</h3>
-                        <p class="mb-3 text-sm leading-relaxed">〒112-0002<br>東京都文京区小石川4-12-4</p>
-                        <p class="mb-3 text-sm leading-relaxed">〒112-0012<br>東京都文京区大塚3-37-1</p>
-                        <p class="mb-3 text-sm">
-                            <span class="font-semibold">Email:</span>
-                            <a href="mailto:info@nakamachi-print.jp" class="text-blue-600 hover:underline break-all"> info@nakamachi-print.jp</a>
-                        </p>
-                        <p class="mb-6 text-sm">
-                            <span class="font-semibold">電話:</span>
-                            <a href="tel:03-3944-0578" class="text-blue-600 hover:underline"> 03-3944-0578</a>
-                        </p>
+        <section id="services" class="services section">
+            <div class="section__inner">
+                <h2 class="section__title">サービス内容</h2>
+                <p class="section__subtitle">「歴史と革新を組み合わせた、中町印刷の印刷ソリューション」</p>
+                <div class="services__container">
+                    <div class="service-card">
+                        <div class="service-card__image-area">
+                            <img src="images/uv-printing.png" alt="UV印刷">
                         </div>
-                    <div class="w-full md:w-2/3">
-                        <h3 class="text-2xl font-bold mb-6 border-b-2 border-blue-600 pb-2">お問い合わせフォーム</h3>
-                        <form id="contact-form"> <div class="grid grid-cols-1 gap-y-5">
-                                <div>
-                                    <label for="name" class="sr-only">お名前</label>
-                                    <input type="text" id="name" name="name" placeholder="お名前*" required
-                                           class="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400">
-                                </div>
-                                <div>
-                                    <label for="email" class="sr-only">メールアドレス</label>
-                                    <input type="email" id="email" name="email" placeholder="メールアドレス*" required
-                                           class="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400">
-                                </div>
-                                 <div>
-                                    <label for="tel" class="sr-only">電話番号</label>
-                                    <input type="tel" id="tel" name="tel" placeholder="電話番号"
-                                           class="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400">
-                                </div>
-                                <div>
-                                    <label for="message" class="sr-only">お問い合わせ内容</label>
-                                    <textarea id="message" name="message" rows="5" placeholder="お問い合わせ内容*" required
-                                              class="block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 placeholder-gray-400"></textarea>
-                                </div>
-                                <div>
-                                    <button type="submit" id="submit-button"
-                                            class="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 disabled:opacity-50">
-                                        送信する
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                         <p id="form-message" class="mt-4 text-sm font-medium"></p> </div>
+                        <h3 class="service-card__title">UV印刷</h3>
+                        <p class="service-card__description">高品質なUV印刷で、速乾性と鮮やかな色彩、特殊素材への対応を実現します。</p>
+                        <a href="#" class="button service-card__button">詳しく見る</a>
+                    </div>
+                    <div class="service-card">
+                         <div class="service-card__image-area">
+                             <img src="images/die-cutting.png" alt="抜き加工">
+                         </div>
+                         <h3 class="service-card__title">抜き加工</h3>
+                         <p class="service-card__description">トムソン加工による精密な型抜きで、パッケージや販促物に独自性を与えます。</p>
+                         <a href="#" class="button service-card__button">詳しく見る</a>
+                    </div>
+                    <div class="service-card">
+                         <div class="service-card__image-area">
+                             <img src="images/printing-services.png" alt="印刷サービス">
+                         </div>
+                         <h3 class="service-card__title">多様な印刷サービス</h3>
+                         <p class="service-card__description">チラシ、ポスター、名刺、封筒など、お客様のあらゆるニーズに応えます。</p>
+                         <a href="#" class="button service-card__button">詳しく見る</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact section">
+            <div class="section__inner">
+                <h2 class="section__title contact__title">お問い合わせ</h2>
+                <div class="contact__container">
+                    <div class="contact__info">
+                        <h3 class="contact__subtitle">会社情報</h3>
+                        <p>〒112-0002<br>東京都文京区小石川4-12-4</p>
+                        <p>〒112-0012<br>東京都文京区大塚3-37-1</p>
+                        <p>Email: <a href="mailto:info@nakamachi-print.jp">info@nakamachi-print.jp</a></p>
+                        <p>電話: <a href="tel:03-3944-0578">03-3944-0578</a></p>
+                    </div>
+                    <div class="contact__form-area">
+                        <h3 class="contact__subtitle">お問い合わせフォーム</h3>
+                        <form id="contact-form" class="contact__form">
+                             <div class="form-group">
+                                 <label for="name" class="sr-only">お名前</label>
+                                 <input type="text" id="name" name="name" placeholder="お名前*" required>
+                             </div>
+                             <div class="form-group">
+                                 <label for="email" class="sr-only">メールアドレス</label>
+                                 <input type="email" id="email" name="email" placeholder="メールアドレス*" required>
+                             </div>
+                              <div class="form-group">
+                                 <label for="tel" class="sr-only">電話番号</label>
+                                 <input type="tel" id="tel" name="tel" placeholder="電話番号">
+                             </div>
+                             <div class="form-group">
+                                 <label for="message" class="sr-only">お問い合わせ内容</label>
+                                 <textarea id="message" name="message" rows="5" placeholder="お問い合わせ内容*" required></textarea>
+                             </div>
+                             <div class="form-group">
+                                 <button type="submit" id="submit-button" class="button contact__submit-button">送信する</button>
+                             </div>
+                         </form>
+                         <p id="form-message" class="form-message"></p>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="bg-gray-800 text-gray-400 text-center py-8">
+    <footer id="footer" class="footer">
         <p>&copy; <span id="current-year"></span> 株式会社中町印刷. All Rights Reserved.</p>
     </footer>
 

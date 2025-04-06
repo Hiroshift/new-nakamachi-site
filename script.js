@@ -1,6 +1,5 @@
-// script.js
+// script.js - シンプル版 (jQuery なし)
 
-// DOM（HTML要素）の読み込みが完了したら実行される処理
 document.addEventListener('DOMContentLoaded', function() {
 
   // --- フッターの年を自動更新 ---
@@ -16,43 +15,42 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (contactForm && submitButton && formMessage) {
       contactForm.addEventListener('submit', function(event) {
-          event.preventDefault(); // ページ遷移するデフォルトの送信を止める
+          event.preventDefault(); // デフォルトの送信を止める
 
-          // 送信ボタンを一時的に無効化し、表示を変更
           submitButton.disabled = true;
           submitButton.textContent = '送信中...';
-          formMessage.textContent = ''; // 前回のメッセージを消す
-          formMessage.className = 'mt-4 text-sm font-medium'; // メッセージの色をリセット
+          formMessage.textContent = '';
+          formMessage.className = 'form-message'; // クラスリセット
 
-          // --- ここにメール送信処理（例: EmailJS）が入ります ---
-          // 今回は EmailJS の設定がまだなので、送信処理の代わりに
-          // ダミーの動作（送信成功したように見せる）を入れます。
-          // 実際にメールを送るには、後でEmailJSの設定が必要です。
-
-          console.log('Form submitted (Processing simulation...)');
-
-          // 1.5秒後にダミーの成功メッセージを表示する例
+          // --- ダミーの送信処理 ---
+          console.log('Form submitted (Simulation)');
           setTimeout(() => {
-              formMessage.textContent = 'お問い合わせありがとうございます。メッセージは送信されました。（※これはテスト表示です）';
-              formMessage.classList.add('text-green-600'); // 緑色の文字に
-              contactForm.reset(); // フォームの入力内容を空にする
-
-              // ボタンを元に戻す
-              submitButton.disabled = false;
-              submitButton.textContent = '送信する';
-          }, 1500); // 1500ミリ秒 = 1.5秒
-
-          /* --- もし送信失敗した場合のダミー動作（参考）---
-          setTimeout(() => {
-              formMessage.textContent = '送信に失敗しました。時間をおいて再度お試しください。（※これはテスト表示です）';
-              formMessage.classList.add('text-red-600'); // 赤色の文字に
-              // ボタンを元に戻す
+              formMessage.textContent = 'お問い合わせありがとうございます。（テスト送信）';
+              formMessage.classList.add('success'); // 成功時のクラス追加
+              contactForm.reset();
               submitButton.disabled = false;
               submitButton.textContent = '送信する';
           }, 1500);
-          */
-          // --- ダミー処理ここまで ---
+          // --- ダミーここまで ---
       });
   }
 
-}); // DOMContentLoaded の終わり
+  // --- モバイルメニュー (ハンバーガーボタン) の簡単なトグル (例) ---
+  // この部分は必要に応じて調整・拡張してください
+  const hamburgerButton = document.querySelector('.header__hamburger');
+  const globalNav = document.querySelector('.header__gnav');
+
+  if (hamburgerButton && globalNav) {
+    hamburgerButton.addEventListener('click', function() {
+      globalNav.classList.toggle('is-active'); // 'is-active' クラスを付け外し
+      // 必要であれば、ここに .is-active 用の CSS を style.css に追加します
+      // 例:
+      // @media (max-width: 767px) {
+      //   .header__gnav.is-active { display: block; position: absolute; top: 70px; left: 0; background: white; width: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+      //   .header__gnav-list { flex-direction: column; padding: 20px; }
+      //   .header__gnav-item { margin-bottom: 15px; }
+      // }
+    });
+  }
+
+});
