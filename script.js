@@ -1,6 +1,14 @@
-// script.js - シンプル版 (jQuery なし)
+// script.js - EmailJS 実装版
 
 document.addEventListener('DOMContentLoaded', function() {
+
+  // --- EmailJSの初期化 ---
+  // 【重要】下の YOUR_PUBLIC_KEY を、メモしたあなたの Public Key に書き換えてください！
+  (function(){
+      emailjs.init({
+        publicKey: "s4S3eXmjINRoqVZRV", // ★★★ あなたの Public Key に書き換える ★★★
+      });
+  })();
 
   // --- フッターの年を自動更新 ---
   const currentYearElement = document.getElementById('current-year');
@@ -20,37 +28,36 @@ document.addEventListener('DOMContentLoaded', function() {
           submitButton.disabled = true;
           submitButton.textContent = '送信中...';
           formMessage.textContent = '';
-          formMessage.className = 'form-message'; // クラスリセット
+          formMessage.className = 'form-message'; // スタイルリセット
 
-          // --- ダミーの送信処理 ---
-          console.log('Form submitted (Simulation)');
-          setTimeout(() => {
-              formMessage.textContent = 'お問い合わせありがとうございます。（テスト送信）';
-              formMessage.classList.add('success'); // 成功時のクラス追加
-              contactForm.reset();
-              submitButton.disabled = false;
-              submitButton.textContent = '送信する';
-          }, 1500);
-          // --- ダミーここまで ---
+          // --- EmailJS でメール送信 ---
+          // 【重要】下の YOUR_SERVICE_ID と YOUR_TEMPLATE_ID を、
+          //         メモしたあなたの Service ID と Template ID に書き換えてください！
+          const serviceID = 'service_dbj6fl4';   // ★★★ あなたの Service ID に書き換える ★★★
+          const templateID = 'template_ncw20ag'; // ★★★ あなたの Template ID に書き換える ★★★
+
+          emailjs.sendForm(serviceID, templateID, this) // 'this' はフォーム要素自身
+              .then(() => {
+                  // --- 送信成功 ---
+                  formMessage.textContent = 'お問い合わせありがとうございます。メッセージは正常に送信されました。';
+                  formMessage.classList.add('success'); // style.css で定義予定の成功色クラス
+                  contactForm.reset(); // フォームリセット
+              }, (err) => {
+                  // --- 送信失敗 ---
+                  formMessage.textContent = 'メッセージの送信に失敗しました。お手数ですが、時間をおいて再度お試しください。';
+                  formMessage.classList.add('error'); // style.css で定義予定の失敗色クラス
+                  console.error('EmailJS Error:', err); // コンソールにエラー詳細表示
+                  alert('メール送信に失敗しました: ' + JSON.stringify(err)); // アラートでも表示
+              })
+              .finally(() => {
+                  // --- 常に実行 ---
+                  submitButton.disabled = false; // ボタン有効化
+                  submitButton.textContent = '送信する';
+              });
       });
   }
 
-  // --- モバイルメニュー (ハンバーガーボタン) の簡単なトグル (例) ---
-  // この部分は必要に応じて調整・拡張してください
-  const hamburgerButton = document.querySelector('.header__hamburger');
-  const globalNav = document.querySelector('.header__gnav');
-
-  if (hamburgerButton && globalNav) {
-    hamburgerButton.addEventListener('click', function() {
-      globalNav.classList.toggle('is-active'); // 'is-active' クラスを付け外し
-      // 必要であれば、ここに .is-active 用の CSS を style.css に追加します
-      // 例:
-      // @media (max-width: 767px) {
-      //   .header__gnav.is-active { display: block; position: absolute; top: 70px; left: 0; background: white; width: 100%; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-      //   .header__gnav-list { flex-direction: column; padding: 20px; }
-      //   .header__gnav-item { margin-bottom: 15px; }
-      // }
-    });
-  }
+  // --- モバイルメニューの簡単なトグル ---
+  // (省略 - 必要なら後で追加)
 
 });
