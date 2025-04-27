@@ -149,3 +149,136 @@ li { margin-bottom: 0.5rem; }
 .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; opacity: 0; }
 .animation-delay-300 { animation-delay: 300ms; }
 .animation-delay-600 { animation-delay: 600ms; }
+
+/* ===== style.css 設備詳細ページ用スタイル (完成形 v2) ===== */
+
+.equipment-detail {
+  background-color: white;
+}
+
+.detail-content {
+  max-width: 850px;
+  margin: 0 auto;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+
+/* --- 画像エリア --- */
+.detail-image-area {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 700px;
+  margin-bottom: 50px; /* 画像下のマージンを増やす */
+}
+.detail-image-area img {
+  border-radius: 8px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1); /* 影を少し調整 */
+  width: 100%;
+}
+
+/* --- テキストエリア --- */
+.detail-text-area {
+  max-width: 750px; /* テキストの最大幅も調整 */
+  margin: 0 auto; /* 中央揃え */
+  line-height: 1.85; /* 行間をほんの少しだけ広げる */
+}
+.detail-text-area p {
+  margin-bottom: 1.5em; /* 段落下のマージン */
+  color: #4a5568; /* 文字色を少し柔らかく (gray-700) */
+}
+
+/* --- 見出し類 --- */
+.detail-subtitle { /* 「生産性と品質...」 */
+  font-size: 1.6rem; /* 少し大きく */
+  margin-bottom: 1.5em;
+  padding-bottom: 0.8em;
+  border-bottom: 1px solid #e5e7eb; /* 罫線を細く */
+}
+
+/* --- 特長リストと仕様表の共通見出し --- */
+.detail-point-title {
+  font-size: 1.2rem; /* 少し大きく */
+  font-weight: 700;
+  margin-top: 2.8em; /* 前の要素との間隔をしっかり空ける */
+  margin-bottom: 1em;
+  padding-left: 0; /* 左のpaddingをなくす */
+  border-left: none; /* 左の線をなくす */
+  border-bottom: 2px solid #2563eb; /* 代わりに下線を引く */
+  padding-bottom: 0.4em;
+}
+
+/* --- 特長リスト --- */
+.detail-list {
+  margin-bottom: 1.8em;
+  padding-left: 0.5em; /* 全体の左インデントを少し減らす */
+  list-style-position: outside; /* マーカーを外側に */
+}
+.detail-list li {
+  margin-bottom: 0.8em;
+  padding-left: 0.8em; /* マーカーとテキストの間隔 */
+}
+.detail-list li strong {
+  color: #1f2937; /* 太字の色を少し濃く (gray-800) */
+}
+
+/* --- 仕様表 --- */
+.detail-specs {
+  margin-bottom: 1.8em;
+  border: 1px solid #e5e7eb; /* テーブル全体に枠線 */
+  border-collapse: separate; /* セル境界線を分離 */
+  border-spacing: 0; /* セル間隔を0に */
+  border-radius: 6px; /* テーブルの角を丸める */
+  overflow: hidden; /* 角丸のため */
+}
+.detail-specs th,
+.detail-specs td {
+  padding: 12px 15px;
+  text-align: left;
+  vertical-align: middle; /* 上下中央揃えに */
+  border-bottom: 1px solid #e5e7eb; /* 横罫線のみに */
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+.detail-specs th {
+  background-color: #f9fafb;
+  width: 30%; /* 幅を少し調整 */
+  font-weight: 600; /* 少し細く */
+  border-right: 1px solid #e5e7eb; /* 縦罫線を追加 */
+}
+/* 最後の行の下罫線を削除 */
+.detail-specs tr:last-child th,
+.detail-specs tr:last-child td {
+   border-bottom: none;
+}
+/* ===== style.css に追記 (右カラムの背景とパディング) ===== */
+@media (min-width: 768px) {
+  .specs-column {
+      /* width: 45%; などは既存の指定 */
+      background-color: #f9fafb; /* 薄いグレー (テーブルヘッダと同じ) */
+      padding: 20px;             /* 内側に余白 */
+      border-radius: 8px;        /* 角を丸める */
+  }
+  /* カラムにパディングを追加した場合の調整 */
+  .specs-column .detail-point-title { margin-top: 0; margin-bottom: 1em; }
+  .specs-column .detail-specs { margin-bottom: 0; }
+}
+/* ====================================================== */
+
+/* --- 戻るボタン --- */
+.back-to-top {
+    text-align: center;
+    margin-top: 70px;
+    margin-bottom: 50px;
+}
+.back-to-top .button {
+  background-color: #4b5563; /* 少し濃いグレー (gray-600) */
+  padding: 10px 25px; /* パディング調整 */
+  border-radius: 5px;
+}
+.back-to-top .button:hover {
+  background-color: #1f2937; /* gray-800 */
+}
+
+/* ====================================================== */
