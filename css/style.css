@@ -13,7 +13,16 @@ body {
   color: #333;
   background-color: #f8fafc; /* body背景色 */
   margin: 0;
+  /* ↓ スティッキーフィンガーを追記 */
+  min-height: 100vh; /* body全体の最小の高さを画面の高さ100%にする */
+  display: flex;       /* Flexboxレイアウトを適用 */
+  flex-direction: column; /* 子要素を縦に並べる */
 }
+main {
+  flex-grow: 1; /* main要素が利用可能なスペースを埋めるように伸びる */
+  /* これにより、コンテンツが短くてもfooterが下に押しやられる */
+}
+
 img { max-width: 100%; height: auto; display: block; }
 a { color: #2563eb; text-decoration: none; transition: color 0.3s ease; }
 a:hover { text-decoration: underline; color: #1d4ed8; }
