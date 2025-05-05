@@ -34,14 +34,25 @@ li { margin-bottom: 0.5rem; }
   width: 100%; max-width: 1100px; margin-left: auto; margin-right: auto;
   padding-left: 20px; padding-right: 20px;
 }
-.section { padding-top: 60px; padding-bottom: 60px; }
+.section { 
+  padding-top: 50px; 
+  padding-bottom: 50px; 
+  margin-bottom: 80px; /* ★セクションの下に均等なスペースを作る */
+}
 .section__title { font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 40px; color: #1f2937; }
 .section__subtitle { text-align: center; color: #4b5563; margin-bottom: 40px; max-width: 640px; margin-left: auto; margin-right: auto; }
 .button { display: inline-block; background-color: #2563eb; color: white; font-weight: 700; padding: 10px 25px; border-radius: 5px; transition: background-color 0.3s ease; cursor: pointer; border: none; text-align: center; font-size: 1rem; }
 .button:hover { background-color: #1d4ed8; text-decoration: none; color: white; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
 .hero__br { display: block; }
-@media (min-width: 768px) { .hero__br { display: none; } }
+@media (min-width: 768px) { 
+  .hero__br { display: none; } 
+  .section {
+    padding-top: 70px;  /* ← PC表示での上の余白をさらに増やす (例: 100px) */
+    padding-bottom: 70px; /* ← PC表示での下の余白をさらに増やす (例: 100px) */
+    margin-bottom: 120px; /* ★PCでのセクション下のスペースを増やす */
+  }
+}
 
 
 /* --- ヘッダー --- */
@@ -65,7 +76,7 @@ li { margin-bottom: 0.5rem; }
 /* ↓↓↓ ここが修正・統合されたヒーローセクションのスタイル ↓↓↓ */
 #hero { /* <<<--- セレクタが #hero (ID) であることを確認！ */
   position: relative;
-  height: 500px;      /* デフォルトの高さ */
+  height: 100vh;      /* デフォルトの高さ */
   overflow: hidden;   /* はみ出し防止 */
   background-image: url('../images/hero-image.jpg'); /* <<<--- 画像パスを確認！(相対パス) */
   background-size: cover;                             /* 要素全体を覆う */
@@ -78,12 +89,6 @@ li { margin-bottom: 0.5rem; }
   text-align: center;
 }
 
-/* 画面幅が768px以上になった場合 */
-@media (min-width: 768px) {
-  #hero { /* <<<--- セレクタが #hero (ID) であることを確認！ */
-    height: 600px; /* 高さを変更 */
-  }
-}
 
 /* ヒーローセクションのテキスト用オーバーレイとコンテンツ配置 */
 .hero__overlay {
