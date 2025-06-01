@@ -57,7 +57,20 @@ li { margin-bottom: 0.5rem; }
 
 /* --- ヘッダー --- */
 .header { background-color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
-.header__inner { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+.header__inner { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  height: 70px; 
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 100%; /* max-width と padding を正しく機能させるため */
+  box-sizing: border-box; /* padding を含めて幅計算 */
+}
+
 .header__logo h1 { font-size: 1.25rem; font-weight: 700; }
 .header__logo a { color: #1f2937; text-decoration: none; }
 .header__gnav { display: none; }
@@ -78,7 +91,7 @@ li { margin-bottom: 0.5rem; }
   position: relative;
   height: 100vh;      /* デフォルトの高さ */
   overflow: hidden;   /* はみ出し防止 */
-  background-image: url('../images/hero-image.jpg'); /* <<<--- 画像パスを確認！(相対パス) */
+  background-image: url('../images/hero-image.png'); /* <<<--- 画像パスを確認！(相対パス) */
   background-size: cover;                             /* 要素全体を覆う */
   background-position: center center;                 /* 中央を表示 (ここを center top や center bottom に変えて調整) */
   /* ↓ 背景画像の上にテキストを表示するための設定 */
@@ -93,15 +106,31 @@ li { margin-bottom: 0.5rem; }
 /* ヒーローセクションのテキスト用オーバーレイとコンテンツ配置 */
 .hero__overlay {
   position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-  background-color: rgba(0, 0, 0, 0.4); /* 半透明の黒 */
+  background-color: rgba(0, 0, 0, 0.2); /* 半透明の黒 */
   z-index: 1;
 }
 .hero__inner {
   position: relative; z-index: 2; padding: 20px;
 }
-.hero__title { font-size: 2.2rem; font-weight: 700; margin-bottom: 15px; line-height: 1.4; }
-.hero__subtitle { font-size: 1.1rem; margin-bottom: 30px; max-width: 600px; }
-.hero__button { font-size: 1.1rem; padding: 12px 30px; border-radius: 30px; }
+.hero__title { 
+  font-size: 3.5rem; 
+  font-weight: 700; 
+  margin-bottom: 20px; 
+  line-height: 1.3; 
+}
+.hero__subtitle { 
+  font-size: 1.1rem; 
+  margin-bottom: 30px; 
+  max-width: 600px; 
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.hero__button { 
+  font-size: 1.1rem; 
+  padding: 12px 30px; 
+  border-radius: 30px; 
+}
 /* ↑↑↑ ヒーロー関連ここまで ↑↑↑ */
 
 
