@@ -3,22 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css"> <link rel="preconnect" href="https://fonts.googleapis.com">
+    <meta name="apple-mobile-web-app-capable" content="no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="mobile-web-app-capable" content="no">
+    <meta name="fullscreen" content="no">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-fullscreen" content="false">
+    <meta name="x5-page-mode" content="app">
+    <title>株式会社中町印刷 | 歴史と革新の融合で高品質な印刷を</title>
+    <meta name="description" content="株式会社中町印刷は、最先端の印刷技術と確かな品質でお客様のビジョンを形にします。UV印刷・抜き加工・多様な印刷サービスを提供。東京都文京区。">
+    <meta property="og:title" content="株式会社中町印刷 | 歴史と革新の融合で高品質な印刷を">
+    <meta property="og:description" content="最先端の印刷技術と確かな品質でお客様のビジョンを形にします。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nakamachi-print.jp/">
+    <meta property="og:image" content="images/hero-image.jpg">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "株式会社中町印刷",
+      "url": "https://nakamachi-print.jp/",
+      "logo": "https://nakamachi-print.jp/images/hero-image.jpg",
+      "contactPoint": [{
+        "@type": "ContactPoint",
+        "telephone": "+81-3-3944-0578",
+        "contactType": "customer service",
+        "areaServed": "JP",
+        "availableLanguage": ["Japanese"]
+      }],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "小石川4-12-4",
+        "addressLocality": "文京区",
+        "postalCode": "112-0002",
+        "addressCountry": "JP"
+      }
+    }
+    </script>
 </head>
 <body>
+
+    <!-- ローディングアニメーション -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <h1>株式会社中町印刷</h1>
+                <div class="loading-subtitle">歴史と革新の融合</div>
+            </div>
+            <div class="loading-spinner">
+                <div class="spinner-ring"></div>
+                <div class="spinner-ring"></div>
+                <div class="spinner-ring"></div>
+            </div>
+            <div class="loading-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="progress-text">読み込み中...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- スクロールインジケーター -->
+    <div class="scroll-indicator" id="scroll-indicator"></div>
 
     <header id="header" class="header">
       <div class="header__inner">
         <div class="header__logo">
             <h1><a href="index.html">株式会社中町印刷</a></h1>
         </div>
-        <div class="header__hamburger">
+        <button class="header__hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobile-menu">
             <span></span>
             <span></span>
             <span></span>
-        </div>
+        </button>
         <nav class="header__gnav">
             <ul class="header__gnav-list">
                 <li class="header__gnav-item"><a href="#hero">ホーム</a></li>
@@ -28,115 +94,125 @@
             </ul>
         </nav>
       </div>
+      
+      <!-- モバイルメニュー -->
+      <nav id="mobile-menu" class="mobile-menu" aria-hidden="true">
+          <ul class="mobile-menu__list">
+              <li class="mobile-menu__item"><a href="#hero" class="mobile-menu__link">ホーム</a></li>
+              <li class="mobile-menu__item"><a href="#equipment" class="mobile-menu__link">設備紹介</a></li>
+              <li class="mobile-menu__item"><a href="#services" class="mobile-menu__link">サービス</a></li>
+              <li class="mobile-menu__item"><a href="#contact" class="mobile-menu__link">お問い合わせ</a></li>
+          </ul>
+      </nav>
     </header>
 
     <main>
-        <section id="hero" class="hero">
-            <div class="hero__overlay"></div>
+        <section id="hero" class="hero smooth-scroll-target">
+            <div class="hero__overlay fade-in-before"></div>
             <div class="hero__inner">
-                <h1 class="hero__title">歴史と革新の融合、印刷の新たな挑戦</h1>
-                <p class="hero__subtitle">最先端の印刷技術と確かな品質で<br class="hero__br">お客様のビジョンを形にします</p>
+                <h1 class="hero__title" data-splitting>歴史と革新の融合、<br class="hero__br">印刷の新たな挑戦</h1>
+                <p class="hero__subtitle" data-splitting>最先端の印刷技術と確かな品質で<br class="hero__br">お客様のビジョンを形にします</p>
                 <!--<a href="#contact" class="button hero__button">お問い合わせ</a>-->
             </div>
         </section>
 
-        <section id="equipment" class="equipment section">
+        <section id="equipment" class="equipment section section-fade-in smooth-scroll-target">
             <div class="section__inner">
-                <h2 class="section__title">最新設備紹介</h2>
-                <div class="equipment__highlight">
+                <h2 class="section__title fade-in-before">最新設備紹介</h2>
+                <div class="equipment__highlight scroll-feedback">
                     <div class="equipment__image-area">
-                        <img src="images/equipment-lithorne.jpg" alt="最新鋭 LITHORNE G37">
+                        <img src="images/equipment-lithorne.jpg" alt="最新鋭 LITHORNE G37 印刷機" loading="lazy" class="fade-in-before">
                     </div>
                     <div class="equipment__text-area">
-                        <h3 class="equipment__name">最新鋭 LITHORNE G37</h3>
-                        <p class="equipment__description">最新のLITHORNE G37は、生産・消費後の環境影響を考慮する最新鋭の技術です。</p>
-                        <ul class="equipment__features">
+                        <h3 class="equipment__name fade-in-before">最新鋭 LITHORNE G37</h3>
+                        <p class="equipment__description fade-in-before">最新のLITHORNE G37は、生産・消費後の環境影響を考慮する最新鋭の技術です。</p>
+                        <ul class="equipment__features fade-in-before">
                             <li>毎時15,000枚の高速印刷で生産性向上</li>
                             <li>人間工学に基づく操作性の高い設計</li>
                             <li>環境負荷低減に貢献する省エネルギー技術</li>
                         </ul>
-                        <a href="equipment-detail.html" class="button equipment__button">詳細を見る</a>
+                        <a href="equipment-detail.html" class="button equipment__button fade-in-before">詳細を見る</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="services" class="services section">
+        <section id="services" class="services section section-fade-in smooth-scroll-target">
             <div class="section__inner">
-                <h2 class="section__title">サービス内容</h2>
-                <p class="section__subtitle">「歴史と革新を組み合わせた、中町印刷の印刷ソリューション」</p>
+                <h2 class="section__title fade-in-before">サービス内容</h2>
+                <p class="section__subtitle fade-in-before">「歴史と革新を組み合わせた、中町印刷の印刷ソリューション」</p>
                 <div class="services__container">
-                    <div class="service-card">
+                    <div class="service-card fade-in-before scroll-feedback">
                         <div class="service-card__image-area">
-                            <img src="images/uv-printing.png" alt="UV印刷">
+                            <img src="images/uv-printing.png" alt="UV印刷のイメージ" loading="lazy" class="fade-in-before">
                         </div>
-                        <h3 class="service-card__title">UV印刷</h3>
-                        <p class="service-card__description">高品質なUV印刷で、速乾性と鮮やかな色彩、特殊素材への対応を実現します。</p>
-                        <a href="service-uv.html" class="button service-card__button">詳しく見る</a>
+                        <h3 class="service-card__title fade-in-before">UV印刷</h3>
+                        <p class="service-card__description fade-in-before">高品質なUV印刷で、速乾性と鮮やかな色彩、特殊素材への対応を実現します。</p>
+                        <a href="service-uv.html" class="button service-card__button fade-in-before">詳しく見る</a>
                     </div>
-                    <div class="service-card">
+                    <div class="service-card fade-in-before scroll-feedback">
                          <div class="service-card__image-area">
-                             <img src="images/die-cutting.png" alt="抜き加工">
+                             <img src="images/die-cutting.png" alt="抜き加工のイメージ" loading="lazy" class="fade-in-before">
                          </div>
-                         <h3 class="service-card__title">抜き加工</h3>
-                         <p class="service-card__description">トムソン加工による精密な型抜きで、パッケージや販促物に独自性を与えます。</p>
-                         <a href="service-die-cut.html" class="button service-card__button">詳しく見る</a>
+                         <h3 class="service-card__title fade-in-before">抜き加工</h3>
+                         <p class="service-card__description fade-in-before">トムソン加工による精密な型抜きで、パッケージや販促物に独自性を与えます。</p>
+                         <a href="service-die-cut.html" class="button service-card__button fade-in-before">詳しく見る</a>
                     </div>
-                    <div class="service-card">
+                    <div class="service-card fade-in-before scroll-feedback">
                          <div class="service-card__image-area">
-                             <img src="images/printing-services.png" alt="印刷サービス">
+                             <img src="images/printing-services.png" alt="多様な印刷サービスのイメージ" loading="lazy" class="fade-in-before">
                          </div>
-                         <h3 class="service-card__title">多様な印刷サービス</h3>
-                         <p class="service-card__description">チラシ、ポスター、名刺、封筒など、お客様のあらゆるニーズに応えます。</p>
-                         <a href="service-various.html" class="button service-card__button">詳しく見る</a>
+                         <h3 class="service-card__title fade-in-before">多様な印刷サービス</h3>
+                         <p class="service-card__description fade-in-before">チラシ、ポスター、名刺、封筒など、お客様のあらゆるニーズに応えます。</p>
+                         <a href="service-various.html" class="button service-card__button fade-in-before">詳しく見る</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="contact section">
+        <section id="contact" class="contact section section-fade-in smooth-scroll-target">
             <div class="section__inner">
-                <h2 class="section__title contact__title">お問い合わせ</h2>
-                <div class="contact__container">
-                    <div class="contact__info">
-                        <h3 class="contact__subtitle">会社情報</h3>
-                        <p>〒112-0002<br>東京都文京区小石川4-12-4</p>
-                        <p>〒112-0012<br>東京都文京区大塚3-37-1</p>
-                        <p>Email: <a href="mailto:info@nakamachi-print.jp">info@nakamachi-print.jp</a></p>
-                        <p>電話: <a href="tel:03-3944-0578">03-3944-0578</a></p>
+                <h2 class="section__title contact__title fade-in-before">お問い合わせ</h2>
+                <div class="contact__container fade-in-before">
+                    <div class="contact__info fade-in-before">
+                        <h3 class="contact__subtitle fade-in-before">会社情報</h3>
+                        <p class="fade-in-before">〒112-0002<br>東京都文京区小石川4-12-4</p>
+                        <p class="fade-in-before">〒112-0012<br>東京都文京区大塚3-37-1</p>
+                        <p class="fade-in-before">Email: <a href="mailto:info@nakamachi-print.jp">info@nakamachi-print.jp</a></p>
+                        <p class="fade-in-before">電話: <a href="tel:03-3944-0578">03-3944-0578</a></p>
                     </div>
-                    <div class="contact__form-area">
-                        <h3 class="contact__subtitle">お問い合わせフォーム</h3>
-                        <form id="contact-form" class="contact__form">
-                             <div class="form-group">
-                                 <label for="name" class="sr-only">お名前</label>
-                                 <input type="text" id="name" name="name" placeholder="お名前*" required>
+                    <div class="contact__form-area fade-in-before">
+                        <h3 class="contact__subtitle fade-in-before">お問い合わせフォーム</h3>
+                        <form id="contact-form" class="contact__form fade-in-before">
+                             <div class="form-group fade-in-before">
+                                 <label for="name">お名前<span aria-hidden="true">*</span></label>
+                                 <input type="text" id="name" name="name" placeholder="お名前*" required autocomplete="name">
                              </div>
-                             <div class="form-group">
-                                 <label for="email" class="sr-only">メールアドレス</label>
-                                 <input type="email" id="email" name="email" placeholder="メールアドレス*" required>
+                             <div class="form-group fade-in-before">
+                                 <label for="email">メールアドレス<span aria-hidden="true">*</span></label>
+                                 <input type="email" id="email" name="email" placeholder="メールアドレス*" required autocomplete="email">
                              </div>
-                              <div class="form-group">
-                                 <label for="tel" class="sr-only">電話番号</label>
-                                 <input type="tel" id="tel" name="tel" placeholder="電話番号">
+                              <div class="form-group fade-in-before">
+                                 <label for="tel">電話番号</label>
+                                 <input type="tel" id="tel" name="tel" placeholder="電話番号" autocomplete="tel">
                              </div>
-                             <div class="form-group">
-                                 <label for="message" class="sr-only">お問い合わせ内容</label>
+                             <div class="form-group fade-in-before">
+                                 <label for="message">お問い合わせ内容<span aria-hidden="true">*</span></label>
                                  <textarea id="message" name="message" rows="5" placeholder="お問い合わせ内容*" required></textarea>
                              </div>
-                             <div class="form-group">
+                             <div class="form-group fade-in-before">
                                  <button type="submit" id="submit-button" class="button contact__submit-button">送信する</button>
                              </div>
                          </form>
-                         <p id="form-message" class="form-message"></p>
+                         <p id="form-message" class="form-message fade-in-before"></p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer id="footer" class="footer">
-        <p>&copy; <span id="current-year"></span> 株式会社中町印刷. All Rights Reserved.</p>
+    <footer class="footer">
+        <p>&copy; 2025 株式会社中町印刷. All Rights Reserved.</p>
     </footer>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="script.js"></script>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>設備詳細 - 株式会社中町印刷</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2563eb;
+            text-align: center;
+        }
+        .button {
+            display: inline-block;
+            background-color: #2563eb;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px;
+        }
+        .button:hover {
+            background-color: #1d4ed8;
+        }
+        .debug-info {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-family: monospace;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>設備詳細ページ</h1>
+        <p>このページが正常に表示されれば、基本的なHTMLとCSSは機能しています。</p>
+        
+        <div class="debug-info">
+            <h3>デバッグ情報</h3>
+            <p>URL: <span id="current-url"></span></p>
+            <p>タイムスタンプ: <span id="timestamp"></span></p>
+            <p>ページタイトル: <span id="page-title"></span></p>
+        </div>
+        
+        <h2>設備情報</h2>
+        <p>最新鋭 LITHORNE G37 の詳細情報です。</p>
+        
+        <h3>主な特長</h3>
+        <ul>
+            <li>毎時15,000枚の高速印刷</li>
+            <li>高品質な印刷品質管理システム</li>
+            <li>環境負荷低減技術</li>
+        </ul>
+        
+        <h2>ナビゲーション</h2>
+        <a href="index.html" class="button">メインページに戻る</a>
+        <a href="test-simple.html" class="button">テストページに戻る</a>
+    </div>
+    
+    <script>
+        // デバッグ情報の表示
+        document.getElementById('current-url').textContent = window.location.href;
+        document.getElementById('timestamp').textContent = new Date().toLocaleString();
+        document.getElementById('page-title').textContent = document.title;
+        
+        console.log('設備詳細ページが読み込まれました');
+        console.log('現在のURL:', window.location.href);
+    </script>
+</body>
+</html> 

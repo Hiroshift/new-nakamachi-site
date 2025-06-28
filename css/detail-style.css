@@ -1,0 +1,247 @@
+/* 詳細ページ用のシンプルなCSS */
+
+/* 基本スタイル */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    line-height: 1.7;
+    color: #333;
+    background-color: #f8fafc;
+}
+
+/* コンテナ */
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* セクション */
+.section-padding {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+/* タイトル */
+.section__title {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #1f2937;
+}
+
+/* ヘッダー */
+.header {
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header__logo h1 {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.header__logo a {
+    color: #1f2937;
+    text-decoration: none;
+}
+
+.header__gnav {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .header__gnav {
+        display: block;
+    }
+    
+    .header__gnav-list {
+        list-style: none;
+        display: flex;
+        gap: 25px;
+        padding-left: 0;
+    }
+    
+    .header__gnav-item a {
+        color: #4b5563;
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    
+    .header__gnav-item a:hover {
+        color: #2563eb;
+        text-decoration: none;
+    }
+}
+
+/* ハンバーガーメニュー */
+.header__hamburger {
+    display: block;
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 8px;
+    position: relative;
+    z-index: 101;
+}
+
+.header__hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+@media (min-width: 768px) {
+    .header__hamburger {
+        display: none;
+    }
+}
+
+/* メインコンテンツ */
+main {
+    min-height: 60vh;
+}
+
+/* 詳細コンテンツ */
+.detail-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.detail-image-area {
+    width: 100%;
+}
+
+.detail-image-area img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.detail-text-area {
+    width: 100%;
+}
+
+.detail-subtitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #1d4ed8;
+}
+
+.detail-point-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #1f2937;
+    border-left: 4px solid #2563eb;
+    padding-left: 15px;
+}
+
+.detail-list {
+    list-style: disc;
+    padding-left: 1.5em;
+    margin-bottom: 20px;
+}
+
+.detail-list li {
+    margin-bottom: 0.5rem;
+}
+
+.detail-specs {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.detail-specs th,
+.detail-specs td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.detail-specs th {
+    background-color: #f9fafb;
+    font-weight: 600;
+    color: #374151;
+}
+
+/* ボタン */
+.button {
+    display: inline-block;
+    background-color: #2563eb;
+    color: white;
+    font-weight: 700;
+    padding: 10px 25px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+.button:hover {
+    background-color: #1d4ed8;
+    text-decoration: none;
+    color: white;
+}
+
+/* フッター */
+.footer {
+    background-color: #1f2937;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+/* レスポンシブ対応 */
+@media (min-width: 768px) {
+    .detail-content {
+        flex-wrap: nowrap;
+    }
+    
+    .detail-image-area {
+        width: 40%;
+    }
+    
+    .detail-text-area {
+        width: 60%;
+    }
+    
+    .section-padding {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+} 

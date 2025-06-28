@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>リンクデバッグ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .debug-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .debug-container h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .link-test {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+        .link-test h3 {
+            margin: 0 0 10px 0;
+            color: #555;
+        }
+        .link-test a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        .link-test a:hover {
+            background: #0056b3;
+        }
+        .status {
+            margin-top: 10px;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+        .status.working {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .status.not-working {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .back-link {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .back-link a {
+            background: #6c757d;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .back-link a:hover {
+            background: #545b62;
+        }
+    </style>
+</head>
+<body>
+    <div class="debug-container">
+        <h1>詳細ページリンクデバッグ</h1>
+        
+        <div class="link-test">
+            <h3>設備詳細ページ</h3>
+            <a href="equipment-detail.html" onclick="testLink('equipment-detail.html', this)">equipment-detail.html</a>
+            <div id="status-equipment" class="status">クリックしてテストしてください</div>
+        </div>
+        
+        <div class="link-test">
+            <h3>UV印刷詳細ページ</h3>
+            <a href="service-uv.html" onclick="testLink('service-uv.html', this)">service-uv.html</a>
+            <div id="status-uv" class="status">クリックしてテストしてください</div>
+        </div>
+        
+        <div class="link-test">
+            <h3>ダイカット詳細ページ</h3>
+            <a href="service-die-cut.html" onclick="testLink('service-die-cut.html', this)">service-die-cut.html</a>
+            <div id="status-die-cut" class="status">クリックしてテストしてください</div>
+        </div>
+        
+        <div class="link-test">
+            <h3>総合印刷詳細ページ（動作確認済み）</h3>
+            <a href="service-various.html" onclick="testLink('service-various.html', this)">service-various.html</a>
+            <div id="status-various" class="status working">このページは動作確認済みです</div>
+        </div>
+        
+        <div class="back-link">
+            <a href="index.html">メインページへ戻る</a>
+        </div>
+    </div>
+
+    <script>
+        function testLink(pageName, linkElement) {
+            const statusElement = document.getElementById('status-' + pageName.replace('.html', '').replace('-', '-'));
+            
+            // リンクをクリックしたことを記録
+            statusElement.textContent = 'クリックされました - 遷移を確認中...';
+            statusElement.className = 'status';
+            
+            // 少し待ってから遷移を試行
+            setTimeout(() => {
+                try {
+                    window.location.href = pageName;
+                } catch (error) {
+                    statusElement.textContent = 'エラーが発生しました: ' + error.message;
+                    statusElement.className = 'status not-working';
+                }
+            }, 100);
+        }
+        
+        // ページ読み込み時の処理
+        window.addEventListener('load', function() {
+            console.log('デバッグページが読み込まれました');
+        });
+    </script>
+</body>
+</html> 
