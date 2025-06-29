@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // ローディング画面のフルスクリーン防止
-    const loadingScreen = document.querySelector('.loading-screen');
+    const loadingScreen = document.getElementById('loading-screen');
     if (loadingScreen) {
         loadingScreen.addEventListener('click', function(e) {
             e.preventDefault();
@@ -500,7 +500,9 @@ function animateSubmitButton(button, isSending) {
 
 // ローディングアニメーションの初期化
 function initLoadingAnimation() {
-    console.log('ローディングアニメーション初期化開始');
+    console.log('=== ローディングアニメーション初期化開始 ===');
+    console.log('現在のURL:', window.location.href);
+    console.log('検索パラメータ:', window.location.search);
     
     // URLパラメータをチェックしてローディングアニメーションをスキップ
     const urlParams = new URLSearchParams(window.location.search);
@@ -508,10 +510,11 @@ function initLoadingAnimation() {
     const noLoading = urlParams.get('noLoading');
     
     console.log('URLパラメータ skipLoading:', skipLoading, 'noLoading:', noLoading);
+    console.log('noLoading === "true":', noLoading === 'true');
     
     // noLoading=trueの場合は完全にローディングをスキップ
     if (noLoading === 'true') {
-        console.log('ローディングアニメーションを完全にスキップします');
+        console.log('=== ローディングアニメーションを完全にスキップします ===');
         
         // URLパラメータを削除
         const newUrl = window.location.pathname + window.location.hash;
@@ -519,33 +522,63 @@ function initLoadingAnimation() {
         console.log('URLを更新:', newUrl);
         
         // ローディング画面を非表示にして、直接メインコンテンツを表示
-        const loadingScreen = document.querySelector('.loading-screen');
+        const loadingScreen = document.getElementById('loading-screen');
+        console.log('ローディング画面要素:', loadingScreen);
+        
         if (loadingScreen) {
+            console.log('ローディング画面を非表示にします');
             loadingScreen.style.display = 'none';
+            loadingScreen.style.visibility = 'hidden';
+            loadingScreen.style.opacity = '0';
+        } else {
+            console.log('警告: ローディング画面が見つかりません');
         }
         
         // メインコンテンツを即座に表示
         const main = document.querySelector('main');
         const header = document.querySelector('.header');
         
+        console.log('メイン要素:', main);
+        console.log('ヘッダー要素:', header);
+        
         if (main) {
             main.classList.add('loaded');
+            main.style.opacity = '1';
+            main.style.visibility = 'visible';
+            main.style.transform = 'translateY(0)';
+            console.log('メインコンテンツのloadedクラスを追加し、スタイルを設定しました');
         }
         if (header) {
             header.classList.add('loaded');
+            header.style.opacity = '1';
+            header.style.visibility = 'visible';
+            header.style.transform = 'translateY(0)';
+            console.log('ヘッダーのloadedクラスを追加し、スタイルを設定しました');
+        }
+        
+        // ヒーローセクションも即座に表示
+        const heroSection = document.querySelector('#hero');
+        if (heroSection) {
+            heroSection.classList.add('visible');
+            heroSection.style.opacity = '1';
+            heroSection.style.visibility = 'visible';
+            console.log('ヒーローセクションを即座に表示しました');
         }
         
         // ナビゲーション機能を即座に初期化
+        console.log('ナビゲーション機能を初期化します');
         initEnhancedSmoothScroll();
         initActiveLinkUpdate();
         initMobileMenu();
         
         // ヒーローアニメーションも即座に開始
         setTimeout(async () => {
+            console.log('ヒーローアニメーションを開始します');
             await waitForSplitting();
             initHeroAnimation();
         }, 100);
         
+        console.log('=== ローディングスキップ処理完了 ===');
         return;
     }
     
@@ -564,9 +597,9 @@ function initLoadingAnimation() {
         return;
     }
     
-    console.log('通常のローディングアニメーションを開始します');
+    console.log('=== 通常のローディングアニメーションを開始します ===');
     
-    const loadingScreen = document.querySelector('.loading-screen');
+    const loadingScreen = document.getElementById('loading-screen');
     if (!loadingScreen) {
         console.log('ローディング画面が見つかりません');
         return;
@@ -712,7 +745,59 @@ function initDetailPageLinks() {
 
 // 初期化関数の修正
 async function initializeApp() {
-    console.log('アプリケーションの初期化を開始します');
+    console.log('=== アプリケーションの初期化を開始します ===');
+    console.log('現在のURL:', window.location.href);
+    
+    // URLパラメータをチェックしてローディング画面を即座に非表示
+    const urlParams = new URLSearchParams(window.location.search);
+    const noLoading = urlParams.get('noLoading');
+    console.log('初期化時のURLパラメータ noLoading:', noLoading);
+    
+    if (noLoading === 'true') {
+        console.log('=== 初期化時にローディングスキップを検出 - 即座にローディング画面を非表示にします ===');
+        
+        // ローディング画面を即座に非表示
+        const loadingScreen = document.getElementById('loading-screen');
+        console.log('初期化時のローディング画面要素:', loadingScreen);
+        
+        if (loadingScreen) {
+            console.log('初期化時にローディング画面を非表示にします');
+            loadingScreen.style.display = 'none';
+            loadingScreen.style.visibility = 'hidden';
+            loadingScreen.style.opacity = '0';
+        }
+        
+        // メインコンテンツを即座に表示
+        const main = document.querySelector('main');
+        const header = document.querySelector('.header');
+        
+        console.log('初期化時のメイン要素:', main);
+        console.log('初期化時のヘッダー要素:', header);
+        
+        if (main) {
+            main.classList.add('loaded');
+            main.style.opacity = '1';
+            main.style.visibility = 'visible';
+            main.style.transform = 'translateY(0)';
+            console.log('メインコンテンツのloadedクラスを追加し、スタイルを設定しました');
+        }
+        if (header) {
+            header.classList.add('loaded');
+            header.style.opacity = '1';
+            header.style.visibility = 'visible';
+            header.style.transform = 'translateY(0)';
+            console.log('ヘッダーのloadedクラスを追加し、スタイルを設定しました');
+        }
+        
+        // ヒーローセクションも即座に表示
+        const heroSection = document.querySelector('#hero');
+        if (heroSection) {
+            heroSection.classList.add('visible');
+            heroSection.style.opacity = '1';
+            heroSection.style.visibility = 'visible';
+            console.log('ヒーローセクションを即座に表示しました');
+        }
+    }
     
     // ページ読み込み完了を待つ
     await waitForPageLoad();
