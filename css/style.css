@@ -223,7 +223,7 @@ li { margin-bottom: 0.5rem; }
   display: flex; 
   justify-content: space-between; 
   align-items: center; 
-  padding: 15px 20px; 
+  padding: 24px 32px; 
   max-width: 1200px; 
   margin: 0 auto; 
 }
@@ -232,8 +232,8 @@ li { margin-bottom: 0.5rem; }
 .header__gnav { display: none; }
 @media (min-width: 768px) {
   .header__gnav { display: block; }
-  .header__gnav-list { list-style: none; display: flex; gap: 25px; padding-left: 0; }
-  .header__gnav-item a { color: #4b5563; font-weight: 500; text-decoration: none; transition: color 0.3s ease; }
+  .header__gnav-list { list-style: none; display: flex; gap: 40px; padding-left: 0; }
+  .header__gnav-item a { color: #4b5563; font-weight: 500; font-size: 1.1rem; padding: 8px 0; text-decoration: none; transition: color 0.3s ease; }
   .header__gnav-item a:hover { color: #2563eb; text-decoration: none; }
   .header__gnav-item a.active { color: #2563eb; font-weight: 600; }
 }
@@ -832,12 +832,12 @@ li { margin-bottom: 0.5rem; }
 
 /* --- フッター --- */
 .footer {
-  background: #222;
+  background: #1f2937;
   color: #fff;
   padding: 40px 0 20px 0;
   text-align: center;
-  margin-top: 0;
-  padding: 24px 0 12px 0;
+  margin-top: 60;
+  padding: 24px 0 32px 0;
 }
 
 .footer__nav ul {

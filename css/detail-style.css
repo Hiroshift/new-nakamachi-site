@@ -1,4 +1,4 @@
-/* 詳細ページ用のシンプルなCSS */
+/* 詳細ページ用のCSS - メインページと統一されたスタイル */
 
 /* 基本スタイル */
 * {
@@ -12,6 +12,7 @@ body {
     line-height: 1.7;
     color: #333;
     background-color: #f8fafc;
+    overflow-x: hidden;
 }
 
 /* コンテナ */
@@ -39,20 +40,28 @@ body {
     color: #1f2937;
 }
 
-/* ヘッダー */
+/* ヘッダー - メインページと統一 */
 .header {
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 100;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+}
+
+.header.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 }
 
 .header__inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
+    padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -65,35 +74,11 @@ body {
 .header__logo a {
     color: #1f2937;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-.header__gnav {
-    display: none;
-}
-
-@media (min-width: 768px) {
-    .header__gnav {
-        display: block;
-    }
-    
-    .header__gnav-list {
-        list-style: none;
-        display: flex;
-        gap: 25px;
-        padding-left: 0;
-    }
-    
-    .header__gnav-item a {
-        color: #4b5563;
-        font-weight: 500;
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-    
-    .header__gnav-item a:hover {
-        color: #2563eb;
-        text-decoration: none;
-    }
+.header__logo a:hover {
+    color: #2563eb;
 }
 
 /* ハンバーガーメニュー */
@@ -104,27 +89,91 @@ body {
     background: none;
     padding: 8px;
     position: relative;
-    z-index: 101;
+    z-index: 1001;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.header__hamburger:hover {
+    background-color: rgba(0, 0, 0, 0.05);
 }
 
 .header__hamburger span {
     display: block;
-    width: 25px;
-    height: 3px;
-    background-color: #333;
-    margin: 5px 0;
+    width: 24px;
+    height: 2px;
+    background-color: #1f2937;
+    margin: 5px auto;
+    transition: all 0.3s ease;
+    border-radius: 1px;
+}
+
+.header__hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.header__hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.header__hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* モバイルメニュー */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
     transition: all 0.3s ease;
 }
 
-@media (min-width: 768px) {
-    .header__hamburger {
-        display: none;
-    }
+.mobile-menu.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-menu__list {
+    list-style: none;
+    text-align: center;
+}
+
+.mobile-menu__item {
+    margin: 20px 0;
+}
+
+.mobile-menu__link {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: block;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.mobile-menu__link:hover {
+    color: #2563eb;
+    background-color: rgba(37, 99, 235, 0.1);
 }
 
 /* メインコンテンツ */
 main {
     min-height: 60vh;
+    padding-top: 80px; /* ヘッダーの高さ分 */
 }
 
 /* 詳細コンテンツ */
@@ -142,8 +191,14 @@ main {
 .detail-image-area img {
     width: 100%;
     height: auto;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.detail-image-area img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
 }
 
 .detail-text-area {
@@ -166,6 +221,23 @@ main {
     padding-left: 15px;
 }
 
+.detail-feature-list {
+    margin-bottom: 20px;
+}
+
+.detail-feature-list dt {
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.detail-feature-list dd {
+    margin-bottom: 20px;
+    color: #4b5563;
+    line-height: 1.8;
+}
+
 .detail-list {
     list-style: disc;
     padding-left: 1.5em;
@@ -174,25 +246,33 @@ main {
 
 .detail-list li {
     margin-bottom: 0.5rem;
+    color: #4b5563;
 }
 
 .detail-specs {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .detail-specs th,
 .detail-specs td {
-    padding: 12px;
+    padding: 15px;
     text-align: left;
     border-bottom: 1px solid #e5e7eb;
 }
 
 .detail-specs th {
-    background-color: #f9fafb;
+    background-color: #f8fafc;
     font-weight: 600;
     color: #374151;
+}
+
+.detail-specs tr:hover {
+    background-color: #f9fafb;
 }
 
 /* ボタン */
@@ -201,20 +281,28 @@ main {
     background-color: #2563eb;
     color: white;
     font-weight: 700;
-    padding: 10px 25px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    padding: 12px 30px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
     cursor: pointer;
     border: none;
     text-align: center;
     font-size: 1rem;
     text-decoration: none;
+    box-shadow: 0 2px 10px rgba(37, 99, 235, 0.3);
 }
 
 .button:hover {
     background-color: #1d4ed8;
     text-decoration: none;
     color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
+}
+
+.back-to-top {
+    text-align: center;
+    margin-top: 40px;
 }
 
 /* フッター */
@@ -222,12 +310,16 @@ main {
     background-color: #1f2937;
     color: white;
     text-align: center;
-    padding: 20px;
-    margin-top: 40px;
+    padding: 30px 20px;
+    margin-top: 60px;
 }
 
 /* レスポンシブ対応 */
 @media (min-width: 768px) {
+    .header__hamburger {
+        display: none;
+    }
+    
     .detail-content {
         flex-wrap: nowrap;
     }
@@ -243,5 +335,28 @@ main {
     .section-padding {
         padding-top: 70px;
         padding-bottom: 70px;
+    }
+    
+    .section__title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    .section__title {
+        font-size: 1.75rem;
+    }
+    
+    .detail-subtitle {
+        font-size: 1.25rem;
+    }
+    
+    .detail-point-title {
+        font-size: 1.1rem;
     }
 } 

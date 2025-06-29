@@ -1,7 +1,108 @@
-// 詳細ページ用のシンプルなJavaScript
+// 詳細ページ用のJavaScript - メインページと統一された機能
+
+// ヘッダーのスクロール効果
+function handleHeaderScroll() {
+    const header = document.getElementById('header');
+    if (header) {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    }
+}
+
+// ハンバーガーメニューの制御
+function initHamburgerMenu() {
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    if (hamburger && mobileMenu) {
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+        
+        // モバイルメニューのリンクをクリックした時にメニューを閉じる
+        const mobileMenuLinks = mobileMenu.querySelectorAll('.mobile-menu__link');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // メニュー外をクリックした時にメニューを閉じる
+        mobileMenu.addEventListener('click', function(e) {
+            if (e.target === mobileMenu) {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+}
+
+// スムーズスクロール
+function initSmoothScroll() {
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    const headerHeight = document.getElementById('header').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+    });
+}
+
+// フッターの年を自動更新
+function updateFooterYear() {
+    const currentYearElement = document.getElementById('current-year');
+    if (currentYearElement) {
+        currentYearElement.textContent = new Date().getFullYear();
+    }
+}
+
+// 画像の遅延読み込み
+function initLazyLoading() {
+    const images = document.querySelectorAll('img');
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.style.opacity = '0';
+                img.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    img.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    img.style.opacity = '1';
+                    img.style.transform = 'translateY(0)';
+                }, 100);
+                
+                observer.unobserve(img);
+            }
+        });
+    });
+    
+    images.forEach(img => {
+        imageObserver.observe(img);
+    });
+}
 
 // フルスクリーン防止の設定
-document.addEventListener('DOMContentLoaded', function() {
+function preventFullscreen() {
     // フルスクリーン要求を防止
     document.addEventListener('fullscreenchange', function() {
         if (document.fullscreenElement) {
@@ -73,17 +174,26 @@ document.addEventListener('DOMContentLoaded', function() {
             return Promise.reject(new Error('Fullscreen is disabled'));
         };
     }
-});
-
-// フッターの年を自動更新
-function updateFooterYear() {
-    const currentYearElement = document.getElementById('current-year');
-    if (currentYearElement) {
-        currentYearElement.textContent = new Date().getFullYear();
-    }
 }
 
 // 初期化
 document.addEventListener('DOMContentLoaded', function() {
+    // ヘッダーのスクロール効果を初期化
+    handleHeaderScroll();
+    window.addEventListener('scroll', handleHeaderScroll);
+    
+    // ハンバーガーメニューを初期化
+    initHamburgerMenu();
+    
+    // スムーズスクロールを初期化
+    initSmoothScroll();
+    
+    // フッターの年を更新
     updateFooterYear();
+    
+    // 画像の遅延読み込みを初期化
+    initLazyLoading();
+    
+    // フルスクリーン防止を初期化
+    preventFullscreen();
 }); 
