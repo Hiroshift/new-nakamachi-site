@@ -178,22 +178,13 @@ function preventFullscreen() {
 
 // 初期化
 document.addEventListener('DOMContentLoaded', function() {
-    // ヘッダーのスクロール効果を初期化
     handleHeaderScroll();
-    window.addEventListener('scroll', handleHeaderScroll);
-    
-    // ハンバーガーメニューを初期化
     initHamburgerMenu();
-    
-    // スムーズスクロールを初期化
     initSmoothScroll();
-    
-    // フッターの年を更新
     updateFooterYear();
-    
-    // 画像の遅延読み込みを初期化
     initLazyLoading();
-    
-    // フルスクリーン防止を初期化
     preventFullscreen();
+    
+    // スクロールイベントの追加
+    window.addEventListener('scroll', handleHeaderScroll);
 }); 

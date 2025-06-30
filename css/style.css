@@ -196,8 +196,8 @@ li { margin-bottom: 0.5rem; }
 }
 .section__title { font-size: 2rem; font-weight: 700; text-align: center; margin-bottom: 40px; color: #1f2937; }
 .section__subtitle { text-align: center; color: #4b5563; margin-bottom: 40px; max-width: 640px; margin-left: auto; margin-right: auto; }
-.button { display: inline-block; background-color: #2563eb; color: white; font-weight: 700; padding: 10px 25px; border-radius: 5px; transition: background-color 0.3s ease; cursor: pointer; border: none; text-align: center; font-size: 1rem; }
-.button:hover { background-color: #1d4ed8; text-decoration: none; color: white; }
+.button { display: inline-block; background-color: #2563eb; color: white; font-weight: 700; padding: 10px 25px; border-radius: 5px; transition: all 0.3s ease; cursor: pointer; border: 2px solid #2563eb; text-align: center; font-size: 1rem; }
+.button:hover { background-color: #fff; color: #2563eb; text-decoration: none; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2); }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
 .hero__br { display: block; }
 @media (min-width: 768px) { 
@@ -593,8 +593,8 @@ li { margin-bottom: 0.5rem; }
 .service-card__image-area img { width: 100%; height: 180px; object-fit: cover; border-radius: 5px; }
 .service-card__title { font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; }
 .service-card__description { color: #4b5563; margin-bottom: 15px; font-size: 0.9rem; }
-.service-card__button { font-weight: 600; padding: 8px 18px; font-size: 0.9rem; background: #2563eb; color: #fff; border: 1px solid #2563eb; transition: background 0.3s, color 0.3s; }
-.service-card__button:hover { background: #fff; color: #2563eb; text-decoration: none; }
+.service-card__button { font-weight: 600; padding: 8px 18px; font-size: 0.9rem; background: #2563eb; color: #fff; border: 2px solid #2563eb; transition: all 0.3s ease; }
+.service-card__button:hover { background: #fff; color: #2563eb; text-decoration: none; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2); }
 
 /* --- お問い合わせ --- */
 .contact {
@@ -725,16 +725,18 @@ li { margin-bottom: 0.5rem; }
   padding: 12px 20px; 
   background: #2563eb; 
   color: #fff; 
-  border: none; 
+  border: 2px solid #2563eb; 
   border-radius: 8px; 
   font-weight: 700; 
-  transition: background 0.3s, color 0.3s; 
+  transition: all 0.3s ease; 
   cursor: pointer;
 }
 
 .contact__submit-button:hover {
   background: #fff; 
   color: #2563eb; 
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
 }
 
 .contact__submit-button:disabled { 
@@ -742,6 +744,7 @@ li { margin-bottom: 0.5rem; }
   cursor: not-allowed; 
   transform: none;
   box-shadow: none;
+  border-color: #9ca3af;
 }
 
 /* フォームメッセージのアニメーション */
@@ -1024,9 +1027,13 @@ li { margin-bottom: 0.5rem; }
   background-color: #4b5563; /* 少し濃いグレー (gray-600) */
   padding: 10px 25px; /* パディング調整 */
   border-radius: 5px;
+  border: 2px solid #4b5563;
 }
 .back-to-top .button:hover {
-  background-color: #1f2937; /* gray-800 */
+  background-color: #fff; 
+  color: #4b5563;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(75, 85, 99, 0.2);
 }
 
 /* ====================================================== */
@@ -1514,5 +1521,14 @@ li { margin-bottom: 0.5rem; }
   .equipment__highlight:hover .equipment__description {
     animation: none;
     transform: none;
+  }
+  
+  /* ボタンホバー効果を無効化 */
+  .button:hover,
+  .service-card__button:hover,
+  .contact__submit-button:hover,
+  .back-to-top .button:hover {
+    transform: none;
+    box-shadow: none;
   }
 }
