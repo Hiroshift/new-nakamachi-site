@@ -212,12 +212,13 @@ li { margin-bottom: 0.5rem; }
 
 /* --- ヘッダー --- */
 .header { 
-  background-color: transparent; 
+  background-color: rgba(255, 255, 255, 0.9); 
   box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
   position: sticky; 
   top: 0; 
   z-index: 100; 
-  transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
 }
 .header__inner { 
   display: flex; 
@@ -356,8 +357,9 @@ li { margin-bottom: 0.5rem; }
 
 /* スクロール時のヘッダー背景 */
 .header.scrolled {
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255, 1);
   backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 
